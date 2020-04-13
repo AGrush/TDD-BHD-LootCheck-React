@@ -1,14 +1,25 @@
 import balanceReducer from './balance'
+import balanceReducer2 from './balance'
 import * as constants from '../actions/constants'
 import * as actions from '../actions/balance'
 
 describe('balanceReducer', () => {
-  it('sets a balance', () => {
+  describe('when initializing', () => {
     const balance = 10;
 
-    //reducers takes two parameters: (previous state, object containing data (action objects (so our setBlance object)))
-    expect(balanceReducer(undefined, { type: constants.SET_BALANCE, balance})).toEqual(balance)
+    it('sets a balance', () => {
+      //reducers takes two parameters: (previous state, object containing data (action objects (so our setBlance object)))
+      expect(balanceReducer(undefined, { type: constants.SET_BALANCE, balance})).toEqual(balance)
+    })
+  
+    //cookies testing
+    describe('then re-initialising',() => {
+      it('reads the balance from cookies', () => {
+        expect(balanceReducer2(undefined, {})).toEqual(balance)
+      })
+    })
   })
+
 
   it('deposits into the balance', () => {
     const deposit = 10;

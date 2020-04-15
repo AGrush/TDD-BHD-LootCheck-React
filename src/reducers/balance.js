@@ -3,7 +3,7 @@ import { read_cookie, bake_cookie } from 'sfcookies'
 
 const BALANCE_COOKIE = 'BALANCE_COOKIE';
 
-//reducers take two paramenters
+//reducers take two paramenters (previous state, object containing data (action object (so e.g. our setBlance object)))
 const balance = (state = 0, action) => {
   let balance;
   

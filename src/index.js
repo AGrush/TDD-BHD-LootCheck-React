@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import rootReducer from './reducers/balance';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'
+import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 import App from './components/App';
+import './index.css'
 // import * as serviceWorker from './serviceWorker';
 
-const store = createStore(rootReducer);
-
-
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createStore(rootReducer, applyMiddleware(thunk))}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
